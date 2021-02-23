@@ -16,6 +16,7 @@ buildscript {
 
         retrofitVersion = '2.9.0'
         gsonVersion = '2.8.6'
+        okhttpLoggingVersion = '4.9.0'
         glideVersion = '4.11.0'
         hiltVersion = '2.31-alpha'
         hiltViewModelVersion = '1.0.0-alpha03'
