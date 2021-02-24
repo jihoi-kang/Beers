@@ -1,7 +1,10 @@
 package com.jay.beers.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Beer(
     @SerializedName("abv")
     val abv: Double,
@@ -37,4 +40,4 @@ data class Beer(
     val targetFg: Double,
     @SerializedName("target_og")
     val targetOg: Double,
-)
+) : Parcelable

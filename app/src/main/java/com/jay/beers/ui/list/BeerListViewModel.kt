@@ -1,6 +1,5 @@
 package com.jay.beers.ui.list
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -20,6 +19,9 @@ class BeerListViewModel @Inject constructor(
 
     private val _beerItems = MutableLiveData<MutableList<Beer>>(mutableListOf())
     val beerItems: LiveData<MutableList<Beer>> get() = _beerItems
+
+    private val _openBeerDetail = MutableLiveData<Beer>()
+    val openBeerDetail: LiveData<Beer> get() = _openBeerDetail
 
     private var isRequestInProgress = false
     private var page = 1
@@ -50,7 +52,7 @@ class BeerListViewModel @Inject constructor(
     }
 
     fun openDetail(beer: Beer) {
-        Log.e(TAG, "beer: ${beer.name}")
+        _openBeerDetail.value = beer
     }
 
     companion object {
