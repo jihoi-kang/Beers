@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.jay.beers.api.BeerService
 import com.jay.beers.base.BaseViewModel
 import com.jay.beers.model.Beer
+import com.jay.beers.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,8 +21,8 @@ class BeerListViewModel @Inject constructor(
     private val _beerItems = MutableLiveData<MutableList<Beer>>(mutableListOf())
     val beerItems: LiveData<MutableList<Beer>> get() = _beerItems
 
-    private val _openBeerDetail = MutableLiveData<Beer>()
-    val openBeerDetail: LiveData<Beer> get() = _openBeerDetail
+    private val _openBeerDetail = MutableLiveData<Event<Beer>>()
+    val openBeerDetail: LiveData<Event<Beer>> get() = _openBeerDetail
 
     private var isRequestInProgress = false
     private var page = 1
@@ -52,7 +53,7 @@ class BeerListViewModel @Inject constructor(
     }
 
     fun openDetail(beer: Beer) {
-        _openBeerDetail.value = beer
+        _openBeerDetail.value = Event(beer)
     }
 
     companion object {

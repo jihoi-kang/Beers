@@ -5,6 +5,7 @@ import com.jay.beers.R
 import com.jay.beers.base.BaseActivity
 import com.jay.beers.databinding.ActivityBeerListBinding
 import com.jay.beers.ui.detail.BeerDetailActivity
+import com.jay.beers.util.eventObserve
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +32,7 @@ class BeerListActivity : BaseActivity<ActivityBeerListBinding, BeerListViewModel
         viewModel.beerItems.observe(this) {
             beerListAdapter.setBeerItems(it)
         }
-        viewModel.openBeerDetail.observe(this) { beer ->
+        viewModel.openBeerDetail.eventObserve(this) { beer ->
             startActivity(BeerDetailActivity.getIntent(this, beer))
         }
     }
