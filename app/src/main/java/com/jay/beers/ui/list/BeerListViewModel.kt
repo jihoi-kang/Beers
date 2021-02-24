@@ -21,15 +21,40 @@ class BeerListViewModel @Inject constructor(
     private val _beerItems = MutableLiveData<MutableList<Beer>>(mutableListOf())
     val beerItems: LiveData<MutableList<Beer>> get() = _beerItems
 
+    private var isRequestInProgress = false
+    private var page = 1
+
     init {
+        load()
+    }
+
+    fun load() {
+        if (isRequestInProgress) return
+
         viewModelScope.launch {
-            val beerItems = beerService.getBeers(1, 30)
-            _beerItems.value = beerItems
+            isRequestInProgress = true
+            showLoading()
+            val beerItems = beerService.getBeers(page, DEFAULT_PER_PAGE)
+            hideLoading()
+
+            val newItems = if (page == 1) {
+                beerItems.toMutableList()
+            } else {
+                _beerItems.value?.apply { addAll(beerItems) }
+            }
+
+            _beerItems.value = newItems ?: mutableListOf()
+            isRequestInProgress = false
+            page++
         }
     }
 
     fun openDetail(beer: Beer) {
         Log.e(TAG, "beer: ${beer.name}")
+    }
+
+    companion object {
+        private const val DEFAULT_PER_PAGE = 20
     }
 
 }
