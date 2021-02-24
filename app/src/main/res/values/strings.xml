@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Beers</string>
+    <string name="text_tips">Tips</string>
+    <string name="text_food_pairing">Food Pairing</string>
+    <string name="fmt_first_brewed">First Brewed: %s</string>
+    <string name="fmt_abv">Alcohol by Volume: %.1f</string>
+    <string name="fmt_ibu">International Bittering Units: %.1f</string>
+    <string name="fmt_srm">Standard Reference Method: %.1f</string>
+    <string name="fmt_contributed_by">Contributed By %s</string>
 </resources>

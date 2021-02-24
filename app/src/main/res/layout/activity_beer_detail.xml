@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,28 +19,109 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="@dimen/space_large"
+            android:layout_marginEnd="@dimen/space_large"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/beer_image_height"
+                android:layout_marginTop="@dimen/space_x_large"
                 android:scaleType="centerInside"
                 bind:loadUrl="@{item.imageUrl}" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.name}" />
+                android:layout_marginTop="@dimen/space_x_large"
+                android:text="@{@string/fmt_first_brewed(item.firstBrewed)}"
+                android:textColor="@color/teal_200"
+                android:textSize="13sp"
+                tools:text="First brewed: 01/2014" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.description}" />
+                android:layout_marginTop="@dimen/space_median"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{item.name}"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Bourbon Baby" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.firstBrewed}" />
+                android:layout_marginTop="@dimen/space_median"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{item.description}"
+                android:textSize="13sp"
+                tools:text="Santa Paws Scotch ale aged in bourbon barrels - light, dry and toasty, with vanilla, hints of chocolate and ginger biscuit, and a faint spicy hoppiness." />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_large"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{@string/fmt_abv(item.abv)}"
+                tools:text="Alcohol by Volume: 7.5%" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_small"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{@string/fmt_ibu(item.ibu)}"
+                tools:text="International Bittering Units: 75" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_small"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{@string/fmt_srm(item.srm)}"
+                tools:text="Standard Reference Method: 15" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_small"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{@string/fmt_contributed_by(item.contributedBy)}"
+                tools:text="Contributed By Sam Mason &lt;ltsamjbmason&gt;" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/text_tips"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_small"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                android:text="@{item.brewersTips}"
+                tools:text="Sorachi Ace is hop best handled with care. Too much and your beer may taste like dill pickle and lemons." />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/text_food_pairing"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_x_small"
+                android:layout_marginBottom="@dimen/space_x_large"
+                android:lineSpacingExtra="@dimen/space_xx_small"
+                bind:listText="@{item.foodPairing}"
+                tools:text="Sashimi, Grilled salmon with a herb and citrus infused butter, Basil, lemon and pine nut angel hair pasta with grilled chicken" />
 
         </LinearLayout>
 
